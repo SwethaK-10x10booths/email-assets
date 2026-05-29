@@ -1,127 +1,226 @@
-<div style="width:378px;background:#f3f3f3;font-family:Arial,sans-serif;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10x10 Booths Email Signature Generator</title>
 
-    <!-- Top Section -->
-    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding:12px 15px;">
-        <tr>
+<style>
 
-            <!-- Logo -->
-            <td width="42%" align="center" valign="middle">
-                <img src="https://swethak-10x10booths.github.io/email-assets/logo.png"
-                     width="110"
-                     style="display:block;border:0;">
-            </td>
+*{
+    box-sizing:border-box;
+}
 
-            <!-- Divider -->
-            <td width="2" bgcolor="#E22901"></td>
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+    padding:30px;
+    margin:0;
+}
 
-            <!-- Contact Details -->
-            <td valign="top" style="padding-left:12px;">
+.container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
+}
 
-                <div style="font-size:14px;font-weight:bold;color:#E22901;line-height:16px;">
-                    ${name}
-                </div>
+.form-section{
+    width:350px;
+    background:#ffffff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
 
-                <div style="font-size:10px;color:#000;padding-bottom:6px;">
-                    ${designation}
-                </div>
+.preview-section{
+    flex:1;
+}
 
-                <table cellpadding="0" cellspacing="0" border="0">
+label{
+    display:block;
+    margin-top:12px;
+    margin-bottom:5px;
+    font-weight:600;
+}
 
-                    <tr>
-                        <td width="14">
-                            <img src="https://swethak-10x10booths.github.io/email-assets/mobile.png"
-                                 width="12">
-                        </td>
-                        <td style="font-size:8px;padding-left:5px;">
-                            ${mobile}
-                        </td>
-                    </tr>
+input,
+select{
+    width:100%;
+    padding:10px;
+    border:1px solid #dcdcdc;
+    border-radius:5px;
+}
 
-                    <tr>
-                        <td width="14">
-                            <img src="https://swethak-10x10booths.github.io/email-assets/mail.png"
-                                 width="12">
-                        </td>
-                        <td style="font-size:8px;padding-left:5px;">
-                            ${email}
-                        </td>
-                    </tr>
+button{
+    width:100%;
+    margin-top:20px;
+    background:#E22901;
+    color:#fff;
+    border:none;
+    padding:12px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-                    <tr>
-                        <td width="14">
-                            <img src="https://swethak-10x10booths.github.io/email-assets/website.png"
-                                 width="12">
-                        </td>
-                        <td style="font-size:8px;padding-left:5px;">
-                            www.10x10booths.com
-                        </td>
-                    </tr>
+button:hover{
+    opacity:0.95;
+}
 
-                    <tr>
-                        <td valign="top">
-                            <img src="https://swethak-10x10booths.github.io/email-assets/location.png"
-                                 width="12">
-                        </td>
-                        <td style="font-size:7px;padding-left:5px;line-height:10px;">
-                            ${address}
-                        </td>
-                    </tr>
+h1{
+    color:#E22901;
+    margin-top:0;
+    font-size:22px;
+}
 
-                </table>
+.preview-title{
+    font-size:14px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
 
-                <!-- Social Icons -->
-                <table cellpadding="0" cellspacing="0" border="0" style="margin-top:6px;">
-                    <tr>
+</style>
+</head>
 
-                        <td>
-                            <a href="https://www.linkedin.com/company/10x10-booths/">
-                                <img src="https://swethak-10x10booths.github.io/email-assets/linkedin.png"
-                                     width="16">
-                            </a>
-                        </td>
+<body>
 
-                        <td width="8"></td>
+<div class="container">
 
-                        <td>
-                            <a href="https://www.instagram.com/10x10_booths/">
-                                <img src="https://swethak-10x10booths.github.io/email-assets/instagram.png"
-                                     width="16">
-                            </a>
-                        </td>
+    <div class="form-section">
 
-                        <td width="8"></td>
+        <h1>10x10 Booths Email Signature Generator</h1>
 
-                        <td>
-                            <a href="https://www.youtube.com/@10x10Booths">
-                                <img src="https://swethak-10x10booths.github.io/email-assets/youtube.png"
-                                     width="16">
-                            </a>
-                        </td>
+        <label>Name</label>
+        <input type="text" id="name" value="Edwin Johnson">
 
-                    </tr>
-                </table>
+        <label>Designation</label>
+        <input type="text" id="designation" value="Founder">
 
-            </td>
+        <label>Mobile Number</label>
+        <input type="text" id="mobile" value="+91 91585 91585">
 
-        </tr>
-    </table>
+        <label>Email Address</label>
+        <input type="email" id="email" value="edwin@10x10booths.com">
 
-    <!-- Global Offices -->
-    <div style="text-align:center;padding:4px 0 2px 0;font-size:7px;color:#000;">
-        Our Global Offices
+        <label>Office</label>
+        <select id="office">
+            <option value="us">US - Texas</option>
+            <option value="uk">UK - London</option>
+            <option value="nl">NL - Rotterdam</option>
+        </select>
+
+        <button onclick="generateSignature()">
+            Generate Signature
+        </button>
+
     </div>
 
-    <div style="text-align:center;padding-bottom:6px;font-size:8px;">
-        <span style="color:#E22901;font-weight:bold;">US</span> - Texas
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <span style="color:#E22901;font-weight:bold;">UK</span> - London
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <span style="color:#E22901;font-weight:bold;">NL</span> - Rotterdam
-    </div>
+    <div class="preview-section">
 
-    <!-- Banner -->
-    <img src="https://swethak-10x10booths.github.io/email-assets/banner.png"
-         width="378"
-         style="display:block;border:0;width:378px;">
+        <div class="preview-title">
+            Signature Preview (Actual Size)
+        </div>
+
+        <div id="preview"></div>
+
+    </div>
 
 </div>
+
+<script>
+
+const offices = {
+
+    us: "7600 Chevy Chase Dr. Suite 300, Austin,<br>TX 78752, United States of America",
+
+    uk: "71-75 Shelton Street, Covent Garden,<br>London, WC2H 9JQ",
+
+    nl: "Westplein 12, 3016BM<br>Rotterdam, Netherlands"
+
+};
+
+function generateSignature(){
+
+    const name = document.getElementById("name").value;
+    const designation = document.getElementById("designation").value;
+    const mobile = document.getElementById("mobile").value;
+    const email = document.getElementById("email").value;
+    const office = document.getElementById("office").value;
+const address = offices[office];
+
+    document.getElementById("preview").innerHTML = `
+
+<div style="width:378px;background:#f3f3f3;font-family:Arial,sans-serif;">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding:12px 15px;">
+<tr>
+<td width="42%" align="center" valign="middle">
+<img src="https://swethak-10x10booths.github.io/email-assets/logo.png" width="110" style="display:block;border:0;">
+</td>
+
+<td width="2" bgcolor="#E22901"></td>
+
+<td valign="top" style="padding-left:12px;">
+<div style="font-size:14px;font-weight:bold;color:#E22901;line-height:16px;">${name}</div>
+<div style="font-size:10px;color:#000;padding-bottom:6px;">${designation}</div>
+
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="14"><img src="https://swethak-10x10booths.github.io/email-assets/mobile.png" width="12"></td>
+<td style="font-size:8px;padding-left:5px;">${mobile}</td>
+</tr>
+
+<tr>
+<td width="14"><img src="https://swethak-10x10booths.github.io/email-assets/mail.png" width="12"></td>
+<td style="font-size:8px;padding-left:5px;">${email}</td>
+</tr>
+
+<tr>
+<td width="14"><img src="https://swethak-10x10booths.github.io/email-assets/website.png" width="12"></td>
+<td style="font-size:8px;padding-left:5px;">www.10x10booths.com</td>
+</tr>
+
+<tr>
+<td valign="top"><img src="https://swethak-10x10booths.github.io/email-assets/location.png" width="12"></td>
+<td style="font-size:7px;padding-left:5px;line-height:10px;">${address}</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" style="margin-top:6px;">
+<tr>
+<td><a href="https://www.linkedin.com/company/10x10-booths/" target="_blank"><img src="https://swethak-10x10booths.github.io/email-assets/linkedin.png" width="16"></a></td>
+<td width="8"></td>
+<td><a href="https://www.instagram.com/10x10_booths/" target="_blank"><img src="https://swethak-10x10booths.github.io/email-assets/instagram.png" width="16"></a></td>
+<td width="8"></td>
+<td><a href="https://www.youtube.com/@10x10Booths" target="_blank"><img src="https://swethak-10x10booths.github.io/email-assets/youtube.png" width="16"></a></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<div style="text-align:center;padding:4px 0 2px 0;font-size:7px;color:#000;">Our Global Offices</div>
+
+<div style="text-align:center;padding-bottom:6px;font-size:8px;">
+<span style="color:#E22901;font-weight:bold;">US</span> - Texas
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<span style="color:#E22901;font-weight:bold;">UK</span> - London
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<span style="color:#E22901;font-weight:bold;">NL</span> - Rotterdam
+</div>
+
+<img src="https://swethak-10x10booths.github.io/email-assets/banner.png" width="378" style="display:block;border:0;width:378px;">
+
+</div>`;
+
+}
+
+generateSignature();
+
+</script>
+
+</body>
+</html>
