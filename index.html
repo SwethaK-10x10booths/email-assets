@@ -8,52 +8,81 @@
 <style>
 body{
     font-family: Arial, sans-serif;
-    background:#f5f5f5;
-    padding:40px;
+    background:#f4f4f4;
+    padding:30px;
 }
 
 .container{
-    max-width:900px;
+    max-width:1200px;
     margin:auto;
+    display:flex;
+    gap:30px;
+}
+
+.form-section{
+    width:35%;
     background:#fff;
-    padding:30px;
+    padding:25px;
     border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.preview-section{
+    width:65%;
+}
+
+.preview-wrapper{
+    background:#f3f3f3;
+    border:1px solid #ddd;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    box-sizing:border-box;
+}
+
+button{
+    margin-top:20px;
+    background:#E22901;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:4px;
+    cursor:pointer;
 }
 
 h1{
     color:#E22901;
 }
 
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:5px;
+.signature-top{
+    padding:20px;
+}
+
+.office-row{
+    text-align:center;
+    padding:10px 0;
+    font-size:12px;
+}
+
+.office-row span{
+    color:#E22901;
     font-weight:bold;
 }
 
-input, select{
+.banner{
     width:100%;
-    padding:10px;
-    border:1px solid #ddd;
-    border-radius:5px;
-}
-
-button{
-    margin-top:20px;
-    background:#E22901;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.preview{
-    margin-top:40px;
-    border:1px solid #ddd;
-    padding:20px;
-    background:#fafafa;
+    display:block;
 }
 </style>
 </head>
@@ -62,53 +91,153 @@ button{
 
 <div class="container">
 
-    <h1>10x10 Booths Email Signature Generator</h1>
+    <div class="form-section">
 
-    <label>Name</label>
-    <input type="text" id="name">
+        <h1>10x10 Booths Email Signature Generator</h1>
 
-    <label>Designation</label>
-    <input type="text" id="designation">
+        <label>Name</label>
+        <input type="text" id="name" value="Edwin Johnson">
 
-    <label>Mobile Number</label>
-    <input type="text" id="mobile">
+        <label>Designation</label>
+        <input type="text" id="designation" value="Founder">
 
-    <label>Email Address</label>
-    <input type="email" id="email">
+        <label>Mobile Number</label>
+        <input type="text" id="mobile" value="+91 91585 91585">
 
-    <label>Office</label>
-    <select id="office">
-        <option>US - Texas</option>
-        <option>UK - London</option>
-        <option>NL - Rotterdam</option>
-        <option>AE - Dubai</option>
-    </select>
+        <label>Email Address</label>
+        <input type="email" id="email" value="edwin@10x10booths.com">
 
-    <button onclick="generateSignature()">Generate Signature</button>
+        <label>Office</label>
+        <select id="office">
+            <option value="us">US - Texas</option>
+            <option value="uk">UK - London</option>
+            <option value="nl">NL - Rotterdam</option>
+        </select>
 
-    <div class="preview" id="preview">
-        Preview will appear here.
+        <button onclick="generateSignature()">
+            Generate Signature
+        </button>
+
+    </div>
+
+    <div class="preview-section">
+
+        <div id="preview"></div>
+
     </div>
 
 </div>
 
 <script>
+
+const offices = {
+
+us: "10x10 Booths, 7600 Chevy Chase Dr. Suite 300, Austin, TX 78752, United States of America",
+
+uk: "10X10 BOOTHS UK LIMITED, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ",
+
+nl: "10x10 Booths B.V., Westplein 12, 3016BM Rotterdam, Netherlands"
+
+};
+
 function generateSignature(){
 
-    let name = document.getElementById('name').value;
-    let designation = document.getElementById('designation').value;
-    let mobile = document.getElementById('mobile').value;
-    let email = document.getElementById('email').value;
-    let office = document.getElementById('office').value;
+const name = document.getElementById("name").value;
+const designation = document.getElementById("designation").value;
+const mobile = document.getElementById("mobile").value;
+const email = document.getElementById("email").value;
+const office = document.getElementById("office").value;
 
-    document.getElementById('preview').innerHTML = `
-        <h2 style="color:#E22901;">${name}</h2>
-        <p>${designation}</p>
-        <p>${mobile}</p>
-        <p>${email}</p>
-        <p><strong>${office}</strong></p>
-    `;
+document.getElementById("preview").innerHTML = `
+
+<div class="preview-wrapper">
+
+    <div class="signature-top">
+
+        <table width="100%" cellpadding="0" cellspacing="0">
+
+            <tr>
+
+                <td width="40%" align="center">
+                    <img src="https://swethak-10x10booths.github.io/email-assets/Signature_Logo.png"
+                         width="180">
+                </td>
+
+                <td width="2" bgcolor="#E22901"></td>
+
+                <td style="padding-left:20px;">
+
+                    <div style="font-size:22px;font-weight:bold;color:#E22901;">
+                        ${name}
+                    </div>
+
+                    <div style="font-size:14px;margin-top:4px;">
+                        ${designation}
+                    </div>
+
+                    <div style="margin-top:12px;font-size:13px;">
+                        📞 ${mobile}
+                    </div>
+
+                    <div style="margin-top:6px;font-size:13px;">
+                        ✉ ${email}
+                    </div>
+
+                    <div style="margin-top:6px;font-size:13px;">
+                        🌐 www.10x10booths.com
+                    </div>
+
+                    <div style="margin-top:8px;font-size:12px;line-height:18px;">
+                        ${offices[office]}
+                    </div>
+
+                    <div style="margin-top:15px;">
+
+                        <a href="https://www.linkedin.com/company/10x10-booths/" target="_blank">
+                            <img src="https://swethak-10x10booths.github.io/email-assets/Signature_LinkedIn.png" width="22">
+                        </a>
+
+                        &nbsp;
+
+                        <a href="https://www.instagram.com/10x10_booths/" target="_blank">
+                            <img src="https://swethak-10x10booths.github.io/email-assets/Signature_Instagram.png" width="22">
+                        </a>
+
+                        &nbsp;
+
+                        <a href="https://www.youtube.com/@10x10Booths" target="_blank">
+                            <img src="https://swethak-10x10booths.github.io/email-assets/Signature_Youtube.png" width="22">
+                        </a>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="office-row">
+        Our Global Offices<br><br>
+
+        <span>US</span> - Texas &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span>UK</span> - London &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span>NL</span> - Rotterdam
+    </div>
+
+    <img
+    class="banner"
+    src="https://swethak-10x10booths.github.io/email-assets/Signature_Banner.png">
+
+</div>
+
+`;
 }
+
+generateSignature();
+
 </script>
 
 </body>
