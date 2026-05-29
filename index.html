@@ -6,10 +6,16 @@
 <title>10x10 Booths Email Signature Generator</title>
 
 <style>
+
+*{
+    box-sizing:border-box;
+}
+
 body{
-    font-family: Arial, sans-serif;
+    font-family:Arial, sans-serif;
     background:#f4f4f4;
     padding:30px;
+    margin:0;
 }
 
 .container{
@@ -17,73 +23,64 @@ body{
     margin:auto;
     display:flex;
     gap:30px;
+    align-items:flex-start;
 }
 
 .form-section{
-    width:35%;
-    background:#fff;
+    width:350px;
+    background:#ffffff;
     padding:25px;
     border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
 .preview-section{
-    width:65%;
-}
-
-.preview-wrapper{
-    background:#f3f3f3;
-    border:1px solid #ddd;
+    flex:1;
 }
 
 label{
     display:block;
     margin-top:12px;
-    font-weight:bold;
+    margin-bottom:5px;
+    font-weight:600;
 }
 
-input,select{
+input,
+select{
     width:100%;
     padding:10px;
-    margin-top:5px;
-    border:1px solid #ccc;
-    border-radius:4px;
-    box-sizing:border-box;
+    border:1px solid #dcdcdc;
+    border-radius:5px;
 }
 
 button{
+    width:100%;
     margin-top:20px;
     background:#E22901;
     color:#fff;
     border:none;
-    padding:12px 20px;
-    border-radius:4px;
+    padding:12px;
+    border-radius:5px;
     cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    opacity:0.95;
 }
 
 h1{
     color:#E22901;
+    margin-top:0;
+    font-size:22px;
 }
 
-.signature-top{
-    padding:20px;
-}
-
-.office-row{
-    text-align:center;
-    padding:10px 0;
-    font-size:12px;
-}
-
-.office-row span{
-    color:#E22901;
+.preview-title{
+    font-size:14px;
+    margin-bottom:10px;
     font-weight:bold;
 }
 
-.banner{
-    width:100%;
-    display:block;
-}
 </style>
 </head>
 
@@ -122,6 +119,10 @@ h1{
 
     <div class="preview-section">
 
+        <div class="preview-title">
+            Signature Preview (Actual Size)
+        </div>
+
         <div id="preview"></div>
 
     </div>
@@ -132,108 +133,156 @@ h1{
 
 const offices = {
 
-us: "10x10 Booths, 7600 Chevy Chase Dr. Suite 300, Austin, TX 78752, United States of America",
+    us: "10x10 Booths, 7600 Chevy Chase Dr. Suite 300, Austin, TX 78752, United States of America",
 
-uk: "10X10 BOOTHS UK LIMITED, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ",
+    uk: "10X10 BOOTHS UK LIMITED, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ",
 
-nl: "10x10 Booths B.V., Westplein 12, 3016BM Rotterdam, Netherlands"
+    nl: "10x10 Booths B.V., Westplein 12, 3016BM Rotterdam, Netherlands"
 
 };
 
 function generateSignature(){
 
-const name = document.getElementById("name").value;
-const designation = document.getElementById("designation").value;
-const mobile = document.getElementById("mobile").value;
-const email = document.getElementById("email").value;
-const office = document.getElementById("office").value;
+    const name = document.getElementById("name").value;
+    const designation = document.getElementById("designation").value;
+    const mobile = document.getElementById("mobile").value;
+    const email = document.getElementById("email").value;
+    const office = document.getElementById("office").value;
 
-document.getElementById("preview").innerHTML = `
+    document.getElementById("preview").innerHTML = `
 
-<div class="preview-wrapper">
+<div style="width:378px;background:#f3f3f3;">
 
-    <div class="signature-top">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding:10px 14px 8px 14px;">
 
-        <table width="100%" cellpadding="0" cellspacing="0">
+<tr>
 
-            <tr>
+<td width="38%" align="center" valign="middle">
 
-                <td width="40%" align="center">
-                    <img src="https://swethak-10x10booths.github.io/email-assets/Signature_Logo.png"
-                         width="180">
-                </td>
+<img src="https://swethak-10x10booths.github.io/email-assets/logo.png"
+width="95"
+style="display:block;border:0;">
 
-                <td width="2" bgcolor="#E22901"></td>
+</td>
 
-                <td style="padding-left:20px;">
+<td width="2" bgcolor="#E22901"></td>
 
-                    <div style="font-size:22px;font-weight:bold;color:#E22901;">
-                        ${name}
-                    </div>
+<td valign="top" style="padding-left:10px;">
 
-                    <div style="font-size:14px;margin-top:4px;">
-                        ${designation}
-                    </div>
+<div style="font-family:Arial,sans-serif;font-size:13px;font-weight:bold;color:#E22901;line-height:14px;">
+${name}
+</div>
 
-                    <div style="margin-top:12px;font-size:13px;">
-                        📞 ${mobile}
-                    </div>
+<div style="font-family:Arial,sans-serif;font-size:8px;color:#000;padding-top:2px;padding-bottom:5px;">
+${designation}
+</div>
 
-                    <div style="margin-top:6px;font-size:13px;">
-                        ✉ ${email}
-                    </div>
+<table cellpadding="0" cellspacing="0" border="0">
 
-                    <div style="margin-top:6px;font-size:13px;">
-                        🌐 www.10x10booths.com
-                    </div>
+<tr>
+<td width="12">
+<img src="https://swethak-10x10booths.github.io/email-assets/mobile.png" width="10">
+</td>
 
-                    <div style="margin-top:8px;font-size:12px;line-height:18px;">
-                        ${offices[office]}
-                    </div>
+<td style="font-family:Arial,sans-serif;font-size:7px;padding-left:4px;">
+${mobile}
+</td>
+</tr>
 
-                    <div style="margin-top:15px;">
+<tr>
+<td width="12">
+<img src="https://swethak-10x10booths.github.io/email-assets/mail.png" width="10">
+</td>
 
-                        <a href="https://www.linkedin.com/company/10x10-booths/" target="_blank">
-                            <img src="https://swethak-10x10booths.github.io/email-assets/Signature_LinkedIn.png" width="22">
-                        </a>
+<td style="font-family:Arial,sans-serif;font-size:7px;padding-left:4px;">
+${email}
+</td>
+</tr>
 
-                        &nbsp;
+<tr>
+<td width="12">
+<img src="https://swethak-10x10booths.github.io/email-assets/website.png" width="10">
+</td>
 
-                        <a href="https://www.instagram.com/10x10_booths/" target="_blank">
-                            <img src="https://swethak-10x10booths.github.io/email-assets/Signature_Instagram.png" width="22">
-                        </a>
+<td style="font-family:Arial,sans-serif;font-size:7px;padding-left:4px;">
+www.10x10booths.com
+</td>
+</tr>
 
-                        &nbsp;
+<tr>
 
-                        <a href="https://www.youtube.com/@10x10Booths" target="_blank">
-                            <img src="https://swethak-10x10booths.github.io/email-assets/Signature_Youtube.png" width="22">
-                        </a>
+<td valign="top">
+<img src="https://swethak-10x10booths.github.io/email-assets/location.png" width="10">
+</td>
 
-                    </div>
+<td style="font-family:Arial,sans-serif;font-size:6px;line-height:8px;padding-left:4px;">
+${offices[office]}
+</td>
 
-                </td>
+</tr>
 
-            </tr>
+</table>
 
-        </table>
+<table cellpadding="0" cellspacing="0" border="0" style="margin-top:6px;">
 
-    </div>
+<tr>
 
-    <div class="office-row">
-        Our Global Offices<br><br>
+<td>
+<a href="https://www.linkedin.com/company/10x10-booths/" target="_blank">
+<img src="https://swethak-10x10booths.github.io/email-assets/linkedin.png" width="14">
+</a>
+</td>
 
-        <span>US</span> - Texas &nbsp;&nbsp;|&nbsp;&nbsp;
-        <span>UK</span> - London &nbsp;&nbsp;|&nbsp;&nbsp;
-        <span>NL</span> - Rotterdam
-    </div>
+<td width="6"></td>
 
-    <img
-    class="banner"
-    src="https://swethak-10x10booths.github.io/email-assets/Signature_Banner.png">
+<td>
+<a href="https://www.instagram.com/10x10_booths/" target="_blank">
+<img src="https://swethak-10x10booths.github.io/email-assets/instagram.png" width="14">
+</a>
+</td>
+
+<td width="6"></td>
+
+<td>
+<a href="https://www.youtube.com/@10x10Booths" target="_blank">
+<img src="https://swethak-10x10booths.github.io/email-assets/youtube.png" width="14">
+</a>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+<div style="font-family:Arial,sans-serif;text-align:center;font-size:6px;color:#000;">
+Our Global Offices
+</div>
+
+<div style="font-family:Arial,sans-serif;text-align:center;font-size:7px;padding:3px 0 5px 0;">
+
+<span style="color:#E22901;font-weight:bold;">US</span> - Texas
+&nbsp;&nbsp;|&nbsp;&nbsp;
+
+<span style="color:#E22901;font-weight:bold;">UK</span> - London
+&nbsp;&nbsp;|&nbsp;&nbsp;
+
+<span style="color:#E22901;font-weight:bold;">NL</span> - Rotterdam
+
+</div>
+
+<img src="https://swethak-10x10booths.github.io/email-assets/banner.png"
+width="378"
+style="display:block;width:378px;border:0;">
 
 </div>
 
 `;
+
 }
 
 generateSignature();
