@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10x10 Booths Email Signature Generator</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    padding:40px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+h1{
+    color:#E22901;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+button{
+    margin-top:20px;
+    background:#E22901;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.preview{
+    margin-top:40px;
+    border:1px solid #ddd;
+    padding:20px;
+    background:#fafafa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>10x10 Booths Email Signature Generator</h1>
+
+    <label>Name</label>
+    <input type="text" id="name">
+
+    <label>Designation</label>
+    <input type="text" id="designation">
+
+    <label>Mobile Number</label>
+    <input type="text" id="mobile">
+
+    <label>Email Address</label>
+    <input type="email" id="email">
+
+    <label>Office</label>
+    <select id="office">
+        <option>US - Texas</option>
+        <option>UK - London</option>
+        <option>NL - Rotterdam</option>
+        <option>AE - Dubai</option>
+    </select>
+
+    <button onclick="generateSignature()">Generate Signature</button>
+
+    <div class="preview" id="preview">
+        Preview will appear here.
+    </div>
+
+</div>
+
+<script>
+function generateSignature(){
+
+    let name = document.getElementById('name').value;
+    let designation = document.getElementById('designation').value;
+    let mobile = document.getElementById('mobile').value;
+    let email = document.getElementById('email').value;
+    let office = document.getElementById('office').value;
+
+    document.getElementById('preview').innerHTML = `
+        <h2 style="color:#E22901;">${name}</h2>
+        <p>${designation}</p>
+        <p>${mobile}</p>
+        <p>${email}</p>
+        <p><strong>${office}</strong></p>
+    `;
+}
+</script>
+
+</body>
+</html>
