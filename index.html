@@ -119,6 +119,10 @@ h1{
             Generate Signature
         </button>
 
+        <button onclick="copySignature()">
+            Copy Signature
+        </button>
+
     </div>
 
     <div class="preview-section">
@@ -310,6 +314,24 @@ font-weight:500;
 
 </div>`;
 
+}
+
+function copySignature() {
+
+    const signature = document.getElementById("preview");
+
+    const range = document.createRange();
+    range.selectNode(signature);
+
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    document.execCommand("copy");
+
+    selection.removeAllRanges();
+
+    alert("Signature copied successfully!");
 }
 
 generateSignature();
