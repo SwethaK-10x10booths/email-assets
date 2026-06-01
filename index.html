@@ -479,8 +479,17 @@ function copySignature() {
 
     const signature = document.getElementById("emailSignature");
 
+    const temp = document.createElement("div");
+    temp.innerHTML = signature.innerHTML;
+
+    temp.style.position = "fixed";
+    temp.style.left = "-9999px";
+    temp.style.top = "0";
+
+    document.body.appendChild(temp);
+
     const range = document.createRange();
-    range.selectNode(signature);
+    range.selectNodeContents(temp);
 
     const selection = window.getSelection();
     selection.removeAllRanges();
@@ -490,9 +499,10 @@ function copySignature() {
 
     selection.removeAllRanges();
 
+    document.body.removeChild(temp);
+
     alert("Signature copied successfully!");
 }
-
 generateSignature();
 
 </script>
