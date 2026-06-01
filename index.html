@@ -121,9 +121,13 @@ h1{
         </button>
 
         <button onclick="copySignature()">
-            Copy Signature
+             Copy Gmail / HubSpot Signature
         </button>
 
+        <button onclick="copyOutlookSignature()">
+            Copy Outlook Signature
+        </button>
+        
     </div>
 
     <div class="preview-section">
@@ -134,6 +138,7 @@ h1{
 
         <div id="preview"></div>
         <div id="emailSignature" style="display:none;"></div>
+        <div id="outlookSignature" style="display:none;"></div>
     </div>
 
 </div>
@@ -475,6 +480,9 @@ Our Global Offices
 
 `;
 
+   document.getElementById("outlookSignature").innerHTML =
+document.getElementById("emailSignature").innerHTML;
+
 }
 
 function copySignature() {
@@ -506,6 +514,39 @@ function copySignature() {
 
     alert("Signature copied successfully!");
 }
+
+   function copyOutlookSignature() {
+
+    const signature =
+        document.getElementById("outlookSignature");
+
+    const temp = document.createElement("div");
+
+    temp.style.background = "#ffffff";
+    temp.innerHTML = signature.innerHTML;
+
+    temp.style.position = "fixed";
+    temp.style.left = "-9999px";
+    temp.style.top = "0";
+
+    document.body.appendChild(temp);
+
+    const range = document.createRange();
+    range.selectNodeContents(temp);
+
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    document.execCommand("copy");
+
+    selection.removeAllRanges();
+
+    document.body.removeChild(temp);
+
+    alert("Outlook signature copied successfully!");
+} 
+    
 generateSignature();
 
 </script>
