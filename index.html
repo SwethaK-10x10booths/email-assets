@@ -322,7 +322,7 @@ line-height:12px;
 
 document.getElementById("emailSignature").innerHTML = `
 <table cellpadding="0" cellspacing="0" border="0" width="378"
-style="width:378px;font-family:Arial,sans-serif;margin-left:12px;">
+style="width:378px;font-family:Arial,sans-serif;background:#ffffff;margin-left:12px;">
 <tr>
 
 <td width="170" align="center" valign="middle" style="padding:12px 10px;">
@@ -482,7 +482,7 @@ function copySignature() {
     const signature = document.getElementById("emailSignature");
 
     const temp = document.createElement("div");
-temp.style.background = "transparent";
+temp.style.background = "#ffffff";
     temp.innerHTML = signature.innerHTML;
 
     temp.style.position = "fixed";
