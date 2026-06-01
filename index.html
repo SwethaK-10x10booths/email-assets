@@ -322,10 +322,10 @@ line-height:12px;
 
 document.getElementById("emailSignature").innerHTML = `
 <table cellpadding="0" cellspacing="0" border="0" width="378"
-style="width:378px;font-family:Arial,sans-serif;background:#ffffff;margin-left:12px;">
+style="width:378px;font-family:Arial,sans-serif;margin-left:12px;">
 <tr>
 
-<td width="140" align="center" valign="middle" style="padding:12px 8px;">
+<td width="170" align="center" valign="middle" style="padding:12px 10px;">
 <img src="https://swethak-10x10booths.github.io/email-assets/logo.png"
      width="110"
      style="display:block;border:0;">
@@ -388,7 +388,7 @@ www.10x10booths.com
      style="display:block;border:0;">
 </td>
 
-<td width="170" style="font-size:7px;padding-left:5px;line-height:10px;">
+<td style="font-size:7px;padding-left:5px;line-height:9px;">
 ${address}
 </td>
 </tr>
@@ -448,25 +448,20 @@ Our Global Offices
 <tr>
 <td align="center" style="font-size:9px;padding-top:2px;padding-bottom:4px;">
 
-<table cellpadding="0" cellspacing="0" border="0" align="center">
-<tr>
+<span style="color:#E22901;font-weight:bold;">US</span> - Texas
+&nbsp; | &nbsp;
 
-<td><span style="color:#E22901;font-weight:bold;">US</span> - Texas</td>
-<td valign="middle" style="padding:0 8px;">|</td>
+<span style="color:#E22901;font-weight:bold;">UK</span> - London
+&nbsp; | &nbsp;
 
-<td><span style="color:#E22901;font-weight:bold;">UK</span> - London</td>
-<td valign="middle" style="padding:0 8px;">|</td>
+<span style="color:#E22901;font-weight:bold;">NL</span> - Rotterdam
+&nbsp; | &nbsp;
 
-<td><span style="color:#E22901;font-weight:bold;">NL</span> - Rotterdam</td>
-<td valign="middle" style="padding:0 8px;">|</td>
-
-<td><span style="color:#E22901;font-weight:bold;">AE</span> - Dubai</td>
-
-</tr>
-</table>
+<span style="color:#E22901;font-weight:bold;">AE</span> - Dubai
 
 </td>
 </tr>
+</table>
 
 <table cellpadding="0" cellspacing="0" border="0" width="378" style="width:378px;">
 <tr>
@@ -487,7 +482,7 @@ function copySignature() {
     const signature = document.getElementById("emailSignature");
 
     const temp = document.createElement("div");
-temp.style.background = "#ffffff";
+temp.style.background = "transparent";
     temp.innerHTML = signature.innerHTML;
 
     temp.style.position = "fixed";
