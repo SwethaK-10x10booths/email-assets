@@ -646,34 +646,36 @@ Our Global Offices
 
 }
 
-function copySignature() {
+async function copySignature() {
 
-    const signature = document.getElementById("emailSignature");
+    const signatureHTML =
+        document.getElementById("emailSignature").innerHTML;
 
-    const temp = document.createElement("div");
-    temp.style.background = "#ffffff";
-    temp.innerHTML = signature.innerHTML;
+    try {
 
-    temp.style.position = "fixed";
-    temp.style.left = "-9999px";
-    temp.style.top = "0";
+        const blob = new Blob(
+            [signatureHTML],
+            { type: "text/html" }
+        );
 
-    document.body.appendChild(temp);
+        const data = [
+            new ClipboardItem({
+                "text/html": blob
+            })
+        ];
 
-    const range = document.createRange();
-    range.selectNodeContents(temp);
+        await navigator.clipboard.write(data);
 
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
+        alert("HubSpot signature copied successfully!");
 
-    document.execCommand("copy");
+    } catch (err) {
 
-    selection.removeAllRanges();
+        console.error(err);
 
-    document.body.removeChild(temp);
-
-    alert("Signature copied successfully!");
+        alert(
+            "Clipboard API not supported. Please use Chrome or Edge."
+        );
+    }
 }
 
    function copyOutlookSignature() {
