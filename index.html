@@ -124,6 +124,10 @@ h1{
              Copy Gmail / HubSpot Signature
         </button>
 
+        <button onclick="copyHubSpotHTML()">
+        Copy HubSpot HTML
+        </button>
+
         <button onclick="copyOutlookSignature()">
             Copy Outlook Signature
         </button>
@@ -646,36 +650,49 @@ Our Global Offices
 
 }
 
-async function copySignature() {
+async function copyGmailSignature() {
 
     const signatureHTML =
         document.getElementById("emailSignature").innerHTML;
 
+    const blob = new Blob(
+        [signatureHTML],
+        { type: "text/html" }
+    );
+
+    const data = [
+        new ClipboardItem({
+            "text/html": blob
+        })
+    ];
+
+    await navigator.clipboard.write(data);
+
+    alert("Gmail signature copied!");
+
+}
+
+    async function copyHubSpotHTML() {
+
     try {
 
-        const blob = new Blob(
-            [signatureHTML],
-            { type: "text/html" }
-        );
+        const signatureHTML =
+            document.getElementById("emailSignature").innerHTML;
 
-        const data = [
-            new ClipboardItem({
-                "text/html": blob
-            })
-        ];
-
-        await navigator.clipboard.write(data);
-
-        alert("HubSpot signature copied successfully!");
-
-    } catch (err) {
-
-        console.error(err);
+        await navigator.clipboard.writeText(signatureHTML);
 
         alert(
-            "Clipboard API not supported. Please use Chrome or Edge."
+            "HubSpot HTML copied!\n\nOpen HubSpot → HTML tab → Paste → Save."
         );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Failed to copy HubSpot HTML.");
+
     }
+
 }
 
    function copyOutlookSignature() {
