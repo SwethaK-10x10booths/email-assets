@@ -105,16 +105,25 @@ h1{
        onblur="if(this.value==='') this.value='Your Name';">
 
         <label>Designation</label>
-        <input type="text" id="designation" value="Designation"
-            onclick="if(this.value==='Designation') this.value='';">
+        <input type="text"
+       id="designation"
+       value="Designation"
+       onfocus="if(this.value==='Designation') this.value='';"
+       onblur="if(this.value==='') this.value='Designation';">
 
         <label>Mobile Number</label>
-        <input type="text" id="mobile" value="Mobile.No"
-            onclick="if(this.value==='Mobile Number') this.value='';">
+        <input type="text"
+       id="mobile"
+       value="Mobile.No"
+       onfocus="if(this.value==='Mobile.No') this.value='';"
+       onblur="if(this.value==='') this.value='Mobile.No';">
 
         <label>Email Address</label>
-        <input type="text" id="email" value="username"
-            onclick="if(this.value==='username') this.value='';">
+        <input type="text"
+       id="email"
+       value="Email Id"
+       onfocus="if(this.value==='Email Id') this.value='';"
+       onblur="if(this.value==='') this.value='Email Id';">
 
         <label>Office</label>
         <select id="office">
