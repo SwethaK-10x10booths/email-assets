@@ -98,8 +98,11 @@ h1{
         <h1>10x10 Booths Email Signature Generator</h1>
 
         <label>Name</label>
-        <input type="text" id="name" value="Your Name"
-            onclick="if(this.value==='Your Name') this.value='';">
+        <input type="text"
+       id="name"
+       value="Your Name"
+       onfocus="if(this.value==='Your Name') this.value='';"
+       onblur="if(this.value==='') this.value='Your Name';">
 
         <label>Designation</label>
         <input type="text" id="designation" value="Designation"
