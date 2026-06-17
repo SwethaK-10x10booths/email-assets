@@ -102,13 +102,16 @@ h1{
             onclick="if(this.value==='Your Name') this.value='';">
 
         <label>Designation</label>
-        <input type="text" id="designation" value="Designation">
+        <input type="text" id="designation" value="Designation"
+            onclick="if(this.value==='Designation') this.value='';">
 
         <label>Mobile Number</label>
-        <input type="text" id="mobile" value="Mobile.No">
+        <input type="text" id="mobile" value="Mobile.No"
+            onclick="if(this.value==='Mobile Number') this.value='';">
 
         <label>Email Address</label>
-        <input type="email" id="email" value="Email Id">
+        <input type="text" id="email" value="username"
+            onclick="if(this.value==='username') this.value='';">
 
         <label>Office</label>
         <select id="office">
@@ -158,7 +161,7 @@ function generateSignature(){
     const name = document.getElementById("name").value;
     const designation = document.getElementById("designation").value;
     const mobile = document.getElementById("mobile").value;
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value + "@10x10booths.com";
     const office = document.getElementById("office").value;
 const address = offices[office];
 
